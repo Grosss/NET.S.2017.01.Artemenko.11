@@ -9,13 +9,26 @@ namespace Task2
     public static class Search
     {
         public static int? BinarySearch<T>(T[] array, T value)
-            => Find(array, 0, array.Length, value, Comparer<T>.Default);
+        {
+            if (ReferenceEquals(array, null))
+                throw new ArgumentNullException();
+
+            return Find(array, 0, array.Length, value, Comparer<T>.Default);
+        }
         
-        public static int? BinarySearch<T>(T[] array, T value, IComparer<T> comparer)        
-            => Find(array, 0, array.Length, value, comparer);
+        public static int? BinarySearch<T>(T[] array, T value, IComparer<T> comparer)
+        {
+            if (ReferenceEquals(array, null))
+                throw new ArgumentNullException();
+
+            return Find(array, 0, array.Length, value, comparer);
+        }       
 
         public static int? BinarySearch<T>(T[] array, int index, int length, T value)
         {
+            if (ReferenceEquals(array, null))
+                throw new ArgumentNullException();
+
             if (index < 0 || length < 0)
                 throw new ArgumentOutOfRangeException();
 
@@ -27,6 +40,9 @@ namespace Task2
 
         public static int? BinarySearch<T>(T[] array, int index, int length, T value, IComparer<T> comparer)
         {
+            if (ReferenceEquals(array, null))
+                throw new ArgumentNullException();
+
             if (index < 0 || length < 0)
                 throw new ArgumentOutOfRangeException();
 
@@ -40,9 +56,6 @@ namespace Task2
 
         private static int? Find<T>(T[] array, int index, int length, T value, IComparer<T> comparer)
         {
-            if (ReferenceEquals(array, null))
-                throw new ArgumentNullException();
-
             if (array.Length == 0)
                 throw new ArgumentException();            
 

@@ -64,6 +64,31 @@ namespace Task2.Tests
             return Search.BinarySearch(array, index, length, value, comparer);
         }
 
+        [TestCase(null, 7)]
+        public void BinarySearch_PassedNullReference_ThrowsArgumentNullException(int[] array, int value)
+        {
+            Assert.Throws<ArgumentNullException>(() => Search.BinarySearch(array, value));
+        }
 
+        [TestCase(new double[] { 1.3, 4.6, 12.4, 16.34, 18.356, 24.34, 32.4, 33.5 }, -3, 5, 24.34)]
+        [TestCase(new double[] { 1.3, 4.6, 12.4, 16.34, 18.356, 24.34, 32.4, 33.5 }, 5, -3, 33.5)]
+        [TestCase(new double[] { 1.3, 4.6, 12.4, 16.34, 18.356, 24.34, 32.4, 33.5 }, -1, -1, 4.6)]
+        public void BinarySearch_PassedArrayOfIntegersAndInvalidIndexOrLength_ThrowsArgumentOutOfRangeException(double[] array, int index, int length, double value)
+        {
+            Assert.Throws<ArgumentOutOfRangeException>(() => Search.BinarySearch(array, index, length, value));
+        }
+
+        [TestCase(new double[] { 1.3, 4.6, 12.4, 16.34, 18.356, 24.34, 32.4, 33.5 }, 2, 8, 24.34)]
+        [TestCase(new double[] { 1.3, 4.6, 12.4, 16.34, 18.356, 24.34, 32.4, 33.5 }, 5, 4, 33.5)]
+        public void BinarySearch_PassedArrayOfIntegersAndInvalidRangeOfIndexAndLength_ThrowsArgumentException(double[] array, int index, int length, double value)
+        {
+            Assert.Throws<ArgumentException>(() => Search.BinarySearch(array, index, length, value));
+        }
+
+        [TestCase(new int[] { }, 7)]
+        public void BinarySearch_PassedEmptyArrayOfIntegers_ThrowsArgumentException(int[] array, int value)
+        {
+            Assert.Throws<ArgumentException>(() => Search.BinarySearch(array, value));
+        }
     }
 }
