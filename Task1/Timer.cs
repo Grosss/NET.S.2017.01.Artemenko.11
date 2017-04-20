@@ -25,7 +25,7 @@ namespace Task1
             TimeIsOver.Invoke(this, e);
         }
 
-        public void setTime(int timeInMilliseconds)
+        public void SetTime(int timeInMilliseconds)
         {
             if (timeInMilliseconds < 0)
                 throw new ArgumentException("Irregular input");

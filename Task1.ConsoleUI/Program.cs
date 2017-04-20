@@ -16,11 +16,11 @@ namespace Task1.ConsoleUI
 
             alarmClock.Subscribe(timer);
             microwave.Subscribe(timer);            
-            timer.setTime(5000);
+            timer.SetTime(5000);
             Console.WriteLine();
 
             alarmClock.Unsubscribe(timer);
-            timer.setTime(3000);
+            timer.SetTime(3000);
 
             Console.ReadLine();
         }
